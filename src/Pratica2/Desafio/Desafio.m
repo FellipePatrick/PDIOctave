@@ -1,19 +1,21 @@
 im = imread('C:\Users\Fellipe Patrick\Pictures\ex\lena.png');
 qtd = input("Digite a quantidade de níveis:");
-cont = 0;
-vetorNiveis = [];
-for i = 1:qtd
-    n = input(sprintf('Digite o tom do nível %d:', i));
-    vetorNiveis = [vetorNiveis, n];
-endfor
-for i = 1:size(im, 1)
-    for j = 1:size(im, 2)
-        cont = cont + 1;
-        im(i, j) = im(i, j) + vetorNiveis(cont);
-        if cont == qtd
-            cont = 0;
-        endif
+anterior = 0;
+proximo = 0;
+nivel = 0;
+cont = qtd;
+for c = 1: cont;
+  proximo = 255/qtd;
+  nivel = anterior + (proximo * 0.15);
+  for i = 1: size(im,1)
+    for j = 1: size(im,2)
+      if(im(i,j) >= anterior && im(i,j) <= proximo)
+        im(i,j) = nivel;
+      endif
     endfor
+  endfor
+  qtd = qtd - 1;
+  anterior = proximo;
 endfor
 figure(1);
 imshow(im);

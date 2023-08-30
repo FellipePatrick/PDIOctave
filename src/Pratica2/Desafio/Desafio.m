@@ -5,8 +5,12 @@ proximo = 0;
 nivel = 0;
 cont = qtd;
 for c = 1: cont;
-  proximo = 255/qtd;
-  nivel = anterior + (proximo * 0.15);
+  if(qtd < 3)
+    proximo = 255/(qtd);
+  else
+    proximo = 255/(qtd-1);
+  endif
+  nivel = anterior;
   for i = 1: size(im,1)
     for j = 1: size(im,2)
       if(im(i,j) >= anterior && im(i,j) <= proximo)
@@ -17,6 +21,6 @@ for c = 1: cont;
   qtd = qtd - 1;
   anterior = proximo;
 endfor
-figure(1);
+figure(3);
 imshow(im);
 

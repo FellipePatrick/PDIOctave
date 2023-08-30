@@ -1,9 +1,11 @@
+clear all
+close all
 im = imread('C:\Users\Fellipe Patrick\Pictures\ex\lena.png');
 #Atribuição direta na matriz
 imTc = im;
-imTc(:,:,:) = imT(:,:,:) + (0.8 * imT(:,:,:));
+imTc(:,:,:) = imTc(:,:,:) + (0.8 * imTc(:,:,:));
 imTe = im;
-imTe(:,:,:) = imT(:,:,:) - (0.8 * imT(:,:,:));
+imTe(:,:,:) = imTc(:,:,:) - (0.8 * imTc(:,:,:));
 #Atribuição indireta
 imClara = im;
 imEscura = im;

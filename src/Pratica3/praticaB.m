@@ -25,9 +25,14 @@ for i = 1: size(im,1)
     endif
   endfor
 endfor
-
-im = im(:,:,:) .* imM(:,:);
-
-
-figure;
+tic
+imd = im(:,:,:) .* imM(:,:);
+toc
+subplot(1,4,1);
 imshow(im);
+subplot(1,4,2);
+imshow(imH);
+subplot(1,4,3);
+imshow(imM);
+subplot(1,4,4);
+imshow(imd);

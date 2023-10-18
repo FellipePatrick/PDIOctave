@@ -41,10 +41,6 @@ sT = px+py;
 d = round(sqrt(px+py));
 figure(1);
 imshow(im);
-
-
-
-
 x = round((1000*d)/140);
 x = round(sqrt(x))
 

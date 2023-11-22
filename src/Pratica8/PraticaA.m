@@ -1,7 +1,8 @@
 clear all
 close all
 im = imread('Imagem.png');
-imS = uint8(rand(62,62,3));
+imS = uint8(zeros(size(im,1)/2, size(im,2)/2, 3));
+imM = imS;
 x = 1;
 y = 1;
 for i = 1: 2:size(im,1)
@@ -12,13 +13,14 @@ for i = 1: 2:size(im,1)
   x++;
   y=1;
 endfor
-imI = uint8(rand(62,62,3));
 x = 1;
 y = 1;
+
 for i = 1: 2:size(im,1)
   for j = 1: 2:size(im,2)
-    p = (im(i+1,j+1,:)/4+im(i+1,j,:)/4 + im(i,j,:)/4 + im(i+1,j+1,:)/4);
-    imI(x,y,:) = p;
+    viz = [im(i,j,:), im(i+1,j,:), im(i, j+1, :), im(i+1,j+1,:)];
+    p = sum(viz)/4
+    imM(x,y,:) = p;
     y++;
   endfor
   x++;
@@ -32,4 +34,4 @@ figure(2);
 imshow(imS);
 
 figure(3);
-imshow(imI);
+imshow(imM);

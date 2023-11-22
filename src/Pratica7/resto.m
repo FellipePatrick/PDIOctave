@@ -21,10 +21,18 @@ for i = 1: size(bin,1)
           im(x,y) = v;
           y--;
         endwhile
-       else
-         im(i,j) = cont;
-         cont++;
        endif
+      else
+        if(im(i-1,j) != 0 || im(i,j-1) != 0)
+          if(im(i-1,j) != 0)
+            im(i,j) = im(i-1,j);
+          else
+            im(i,j) = im(i,j-1);
+          endif
+        else
+          im(i,j) = cont;
+          cont++;
+        endif
     endif
   endfor
 endfor

@@ -52,8 +52,8 @@ for i = 1: 2: 247
         if(y < 122)
         y++;
       end
-      p =  im(x,y,:)/8 + im(x,y+1,:)/8 + im(x+1,y,:)/8 + im(x+1,y+1,:)/8 + im(x,y+2,:)/8 + im(x+2,y,:)/8 + im(x+2,y+2,:)/8 ;
-      imGG(i,j,:) = p;
+      imGG = double(imGG);
+      p =  double((im(x,y,:) + im(x,y+1,:) + im(x+1,y,:) + im(x+1,y+1,:) + im(x,y+2,:) + im(x+2,y,:) + im(x+2,y+2,:))/8);      imGG(i,j,:) = p;
       imGG(i,j+1,:) = p;
       imGG(i+1,j,:) = p;
       imGG(i+1,j+1,:) = p;
